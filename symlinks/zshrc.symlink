@@ -11,7 +11,7 @@ plugins=(git) # oh-my-zsh plugins
 source $ZSH/oh-my-zsh.sh # init oh-my-zsh
 
 # include Z, yo
-. $DOTFILES/script/z.sh
+. $DOTFILES/scripts/z.sh
 
 # Loading nvm
 . "$(brew --prefix nvm)/nvm.sh"
