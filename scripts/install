@@ -70,9 +70,24 @@ brew install homebrew/dupes/screen
 # brew install xpdf
 # brew install xz
 
-# Install Oh-My-Zsh
-echo "››› Installing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# Install/Upgrade Oh-My-Zsh
+if test $(find $HOME/dotfiles/oh-my-zsh/oh-my-zsh.sh)
+then
+	echo "››› Upgrading oh-my-zsh"
+	sh $ZSH/tools/upgrade.sh
+else
+	echo "››› Installing oh-my-zsh"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+# Creating .localrc for personal config
+if test ! $(find $HOME/.localrc)
+then
+	echo "››› Createing .localrc in $HOME/"
+	touch $HOME/.localrc
+else
+	echo "››› File already exists: $HOME/.localrc"
+fi
 
 # initDotfiles (must run after oh-my-zsh install)
 echo "››› Initializing Dotfiles"
