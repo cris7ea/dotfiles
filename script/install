@@ -1,0 +1,93 @@
+#!/bin/sh
+
+# Ask for root password
+sudo -v
+
+# Set macOS defaults
+echo "››› set-macOS-defaults"
+macOSDefaults.sh
+
+# Install macOS software
+echo "››› sudo softwareupdate -i -a"
+sudo softwareupdate -i -a
+
+# Install homebrew
+if test ! $(which brew)
+then
+  echo "››› Installing Homebrew for you."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+# Update homebrew
+echo "››› brew update"
+brew update
+
+# Upgrade Out-of-date Software
+echo "››› brew upgrade"
+brew upgrade -all
+
+# Run Homebrew through the Brewfile
+echo "››› brew bundle"
+brew bundle
+
+echo "››› Installing some brew tools"
+# Install GNU `sed`, overwriting the built-in `sed`.
+brew install gnu-sed --with-default-names
+
+# Install `wget` with IRI support.
+brew install wget --with-iri
+
+# Install more recent versions of some macOS tools.
+brew install vim --override-system-vi
+brew install homebrew/dupes/grep
+brew install homebrew/dupes/openssh
+brew install homebrew/dupes/screen
+# brew install homebrew/php/php56 --with-gmp
+
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+# brew install aircrack-ng
+# brew install bfg
+# brew install binutils
+# brew install binwalk
+# brew install cifer
+# brew install dex2jar
+# brew install dns2tcp
+# brew install fcrackzip
+# brew install foremost
+# brew install hashpump
+# brew install hydra
+# brew install john
+# brew install knock
+# brew install netpbm
+# brew install nmap
+# brew install pngcheck
+# brew install socat
+# brew install sqlmap
+# brew install tcpflow
+# brew install tcpreplay
+# brew install tcptrace
+# brew install ucspi-tcp # `tcpserver` etc.
+# brew install xpdf
+# brew install xz
+
+# Install Oh-My-Zsh
+echo "››› Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+# initDotfiles (must run after oh-my-zsh install)
+echo "››› Initializing Dotfiles"
+./initDotfiles
+
+# Symlink for GNU core utilities
+echo "››› Adding symlink for GNU core utilities"
+ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+
+# Install Node.js dependencies
+echo "››› Installing Node dependencies"
+if test ! $(which spoof)
+then
+  sudo npm install spoof -g
+fi
+
+# Finish
+echo "››› Install Done!"

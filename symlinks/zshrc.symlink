@@ -1,0 +1,23 @@
+# Paths
+export PATH="./bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$PATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" # Loading GNU core utilities
+export DOTFILES="$HOME/.dotfiles"
+export NVM_DIR="$HOME/.nvm"
+export ZSH="$DOTFILES/oh-my-zsh";
+
+## ZSH Configuration
+ZSH_THEME="robbyrussell" # oh-my-zsh theme
+plugins=(git) # oh-my-zsh plugins
+source $ZSH/oh-my-zsh.sh # init oh-my-zsh
+
+# include Z, yo
+. $DOTFILES/script/z.sh
+
+# Loading nvm
+. "$(brew --prefix nvm)/nvm.sh"
+
+# Loading custom local configurations
+source $HOME/.localrc
+
+# Load aliases
+source $DOTFILES/symlinks/aliases
