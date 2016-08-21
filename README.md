@@ -27,3 +27,7 @@
 - **install**: This will do update, install, brew, cask, macDefaults, oh-my-zsh, 
  etc. It's best to execute it from time to time.
 - **macOSDefaults**: This contains some of my preferances for on macOS.
+
+## Install:
+
+`cd; git clone https://github.com/cristeagc/dotfiles.git; cd dotfiles/scripts; ./install`

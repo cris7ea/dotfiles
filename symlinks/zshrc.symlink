@@ -1,5 +1,6 @@
 # Paths
 export PATH="./bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$PATH"
+# >>> TODO: remove $HOME/.bin from $PATH and create one inside dotfiles
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" # Loading GNU core utilities
 export DOTFILES="$HOME/dotfiles"
 export NVM_DIR="$HOME/.nvm"
