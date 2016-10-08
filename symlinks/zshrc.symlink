@@ -22,3 +22,6 @@ source $HOME/.localrc
 
 # Load aliases
 source $DOTFILES/symlinks/aliases
+
+# Loading composer
+alias composer="php /usr/local/bin/composer.phar"
