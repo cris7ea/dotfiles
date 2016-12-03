@@ -1,4 +1,26 @@
 syntax on
+set number
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'chriskempson/base16-vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" Config for Base16-Shell
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-ocean
+
+" Config for NERDTree
+
+" Key Mappings
+map <C-n> :NERDTreeToggle<CR>

@@ -1,8 +1,12 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'caskroom/cask'
+tap 'caskroom/versions'
 
-breq 'htop'
+brew 'watchman'
+brew 'tmux'
+brew 'htop'
 brew 'ack'
 brew 'openssl'
 brew 'nvm'
@@ -14,13 +18,14 @@ brew 'tree'
 brew 'coreutils'
 brew 'moreutils' # Install some other useful utilities like `sponge`.
 brew 'findutils' # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew 'dark-mode'
 brew 'git-lfs'
 
+cask 'atom'
+cask 'charles'
 cask 'iterm2'
+cask 'torbrowser'
 cask 'firefox'
 cask 'google-chrome'
-cask 'handbrake'
 cask 'vlc'
 cask 'namechanger'
 cask 'transmit'

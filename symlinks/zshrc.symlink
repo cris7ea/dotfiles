@@ -1,10 +1,11 @@
 # Paths
-export PATH="./bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$PATH"
+export PATH="./bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$HOME/Library/Android/sdk/tools:$PATH"
 # >>> TODO: remove $HOME/.bin from $PATH and create one inside dotfiles
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" # Loading GNU core utilities
 export DOTFILES="$HOME/dotfiles"
 export NVM_DIR="$HOME/.nvm"
 export ZSH="$DOTFILES/oh-my-zsh";
+export ANDROID_HOME=$HOME/Library/Android/sdk
 
 ## ZSH Configuration
 ZSH_THEME="robbyrussell" # oh-my-zsh theme
@@ -25,3 +26,7 @@ source $DOTFILES/symlinks/aliases
 
 # Loading composer
 alias composer="php /usr/local/bin/composer.phar"
+
+# Load Base16
+[ -n "$PS1" ] && [ -s $DOTFILES/base16-shell/profile_helper.sh ] && eval "$($DOTFILES/base16-shell/profile_helper.sh)"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
