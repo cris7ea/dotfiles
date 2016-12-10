@@ -88,5 +88,8 @@ then
   sudo npm install spoof -g
 fi
 
+# Install npm@latest
+npm i npm@latest -g
+
 # Finish
 echo "››› Install Done!"
