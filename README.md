@@ -38,4 +38,4 @@
 
 Installs latest node version + reinstalls NPM global packages from old version: `nvm install node --reinstall-packages-from=node`
 
-Make the new version of node persist on new terminal session: `nvm alias default node`
+Make the new version of node persist on new terminal session: `nvm alias default NODE_VERSION`
