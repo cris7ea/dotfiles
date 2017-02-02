@@ -13,7 +13,7 @@
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/initDotfiles`.
 - **gitconfig.local.symbling**: is added in .gitignore so no one can commit with
-  my name by accident. It contains the fallowing: 
+  my name by accident. It contains the fallowing:
 
 ```
 [user]
@@ -24,10 +24,18 @@
 ```
 
 - **initDotfiles**: This will search for all `.symlink` files and create a .file symlink in `$HOME` dir.
-- **install**: This will do update, install, brew, cask, macDefaults, oh-my-zsh, 
+- **install**: This will do update, install, brew, cask, macDefaults, oh-my-zsh,
  etc. It's best to execute it from time to time.
 - **macOSDefaults**: This contains some of my preferances for on macOS.
 
 ## Install:
 
 `cd; git clone https://github.com/cristeagc/dotfiles.git; cd dotfiles/scripts; ./install`
+
+## Other:
+
+- Install new version of node with NVM:
+
+Installs latest node version + reinstalls NPM global packages from old version: `nvm install node --reinstall-packages-from=node`
+
+Make the new version of node persist on new terminal session: `nvm alias default 7.5.0`

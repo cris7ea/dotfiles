@@ -4,11 +4,57 @@
 [hub]
         protocol = https
 [alias]
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = !git shortlog -sn
+        #Log files
+        l = !git --no-pager log --pretty=oneline -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --branches
+        ls = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate
+        ll = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --decorate --stat
+
+        #Git status short
+        s = status -s
+
+        # Commit all changes
+        ca = !git add -A && git commit -av
+
+        # Switch to a branch, creating it if necessary
+        go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+        # Show verbose output about tags, branches or remotes
+        tags = tag -l
+        branches = branch -a
+        remotes = remote -v
+
+        #Show the diff between the latest commit and the current state
+        d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+        # Interactive rebase with the given number of latest commits
+        reb = "!r() { git rebase -i HEAD~$1; }; r"
+
+        # Find branches containing commit
+        fb = "!f() { git branch -a --contains $1; }; f"
+
+        # Find tags containing commit
+        ft = "!f() { git describe --always --contains $1; }; f"
+
+        # Find commits by source code
+	      fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+        # Remove branches that have already been merged with master
+	      # a.k.a. ‘delete merged’
+        dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
+        # List contributors with number of commits
+	      contributors = shortlog --summary --numbered
+
+        #Assume a file as unchanged
+        assume = update-index --assume-unchanged
+        #Unassume a file
+        unassume = update-index --no-assume-unchanged
+        #Show assumed files
+        assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+        #Unassume all the assumed files
+        unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+        #Assume all
+        assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 [color]
         diff = auto
         status = auto
@@ -37,7 +83,9 @@
 	required = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[user]
+	name = Cristian Cristea
