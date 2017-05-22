@@ -89,6 +89,7 @@ then
 fi
 
 # Install npm@latest
+echo "››› Installing NPM Latest"
 npm i npm@latest -g
 
 # Finish

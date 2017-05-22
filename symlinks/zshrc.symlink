@@ -8,7 +8,7 @@ export ZSH="$DOTFILES/oh-my-zsh";
 export ANDROID_HOME=$HOME/Library/Android/sdk
 
 ## ZSH Configuration
-ZSH_THEME="robbyrussell" # oh-my-zsh theme
+ZSH_THEME="awesomepanda" # oh-my-zsh theme
 plugins=(git) # oh-my-zsh plugins
 source $ZSH/oh-my-zsh.sh # init oh-my-zsh
 
@@ -30,3 +30,9 @@ alias composer="php /usr/local/bin/composer.phar"
 # Load Base16
 [ -n "$PS1" ] && [ -s $DOTFILES/base16-shell/profile_helper.sh ] && eval "$($DOTFILES/base16-shell/profile_helper.sh)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# Initialization for FDK command line tools.Tue Apr 18 11:33:32 2017
+FDK_EXE="/Users/cristeageorge/bin/FDK/Tools/osx"
+PATH=${PATH}:"/Users/cristeageorge/bin/FDK/Tools/osx"
+export PATH
+export FDK_EXE
