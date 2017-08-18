@@ -1,38 +1,28 @@
 # Paths
-export PATH="./bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$HOME/Library/Android/sdk/tools:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/sbin:$HOME/.bin:$HOME/.rvm/bin:$PATH"
 # >>> TODO: remove $HOME/.bin from $PATH and create one inside dotfiles
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH" # Loading GNU core utilities
 export DOTFILES="$HOME/dotfiles"
 export NVM_DIR="$HOME/.nvm"
 export ZSH="$DOTFILES/oh-my-zsh";
-export ANDROID_HOME=$HOME/Library/Android/sdk
 
-## ZSH Configuration
-ZSH_THEME="awesomepanda" # oh-my-zsh theme
-plugins=(git) # oh-my-zsh plugins
-source $ZSH/oh-my-zsh.sh # init oh-my-zsh
-
-# include Z, yo
-. $DOTFILES/scripts/z.sh
+## OH-MY-ZSH Configuration
+ZSH_THEME="" # theme
+source $ZSH/oh-my-zsh.sh # init
+# Init the sindresorhus/pure theme
+autoload -U promptinit; promptinit
+prompt pure
 
 # Loading nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# Loading custom local configurations
-source $HOME/.localrc
-
 # Load aliases
 source $DOTFILES/symlinks/aliases
 
-# Loading composer
-alias composer="php /usr/local/bin/composer.phar"
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  export VISUAL="nvr -cc split --remote-wait +'set bufhidden=wipe'"
+else
+  export VISUAL="nvim"
+fi
 
-# Load Base16
-[ -n "$PS1" ] && [ -s $DOTFILES/base16-shell/profile_helper.sh ] && eval "$($DOTFILES/base16-shell/profile_helper.sh)"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Initialization for FDK command line tools.Tue Apr 18 11:33:32 2017
-FDK_EXE="/Users/cristeageorge/bin/FDK/Tools/osx"
-PATH=${PATH}:"/Users/cristeageorge/bin/FDK/Tools/osx"
 export PATH
-export FDK_EXE

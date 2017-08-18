@@ -3,3 +3,4 @@
 *.swp
 .idea
 run-servers.sh
+tags

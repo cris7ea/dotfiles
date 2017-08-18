@@ -55,6 +55,9 @@
         unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
         #Assume all
         assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+
+        #
+        ghpages = subtree push --prefix site/ origin gh-pages
 [color]
         diff = auto
         status = auto

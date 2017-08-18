@@ -1,5 +1,14 @@
 #!/bin/sh
 
+if [ -e ~/.ssh/id_rsa ]
+then
+  echo "››› We have a SSH private key! Testing Github connection..."
+  ssh -T git@github.com
+else
+  echo "››› Terminating script: No SSH private key 😝"
+  exit 1
+fi
+
 # Ask for root password
 sudo -v
 
@@ -30,13 +39,6 @@ brew upgrade -all
 echo "››› brew bundle"
 brew bundle
 
-echo "››› Installing some brew tools"
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
-
-# Install `wget` with IRI support.
-brew install wget --with-iri
-
 # Install more recent versions of some macOS tools.
 brew install macvim --HEAD --with-cscope --with-lua --with-override-system-vim --with-luajit --with-python
 brew link macvim
@@ -46,51 +48,67 @@ brew install homebrew/dupes/screen
 # brew install homebrew/php/php56 --with-gmp
 
 # Install/Upgrade Oh-My-Zsh
-if test $(find $HOME/dotfiles/oh-my-zsh/oh-my-zsh.sh)
+if test $(find ~/dotfiles/oh-my-zsh/oh-my-zsh.sh)
 then
-	echo "››› Upgrading oh-my-zsh"
-	sh $ZSH/tools/upgrade.sh
+  echo "››› Oh-My-Zsh exists!"
 else
-	echo "››› Installing oh-my-zsh"
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  echo "››› Installing oh-my-zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
-# Install base16-shell
-if test $(find $HOME/dotfiles/base16-shell/README.md)
+# Copy nvim files
+if [ -e ~/.nvm ]
 then
-	echo "››› Base16-Shell Installed"
+  echo "››› NVM config exists!"
 else
-	echo "››› Installing Base16-Shell"
-	git clone https://github.com/chriskempson/base16-shell.git $HOME/dotfiles/base16-shell
+  echo "››› Installing NVM!"
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 fi
 
-# Creating .localrc for personal config
-if test ! $(find $HOME/.localrc)
+# Init nvim
+if [ -e ~/.vim/pack ]
 then
-	echo "››› Createing .localrc in $HOME/"
-	touch $HOME/.localrc
+  echo "››› VIM pack exists!"
 else
-	echo "››› File already exists: $HOME/.localrc"
+  echo "››› Installing Minpac!"
+  mkdir -p ~/.vim/pack/minpac/opt
+  cd ~/.vim/pack/minpac/opt
+  git clone https://github.com/k-takata/minpac.git
 fi
 
 # initDotfiles (must run after oh-my-zsh install)
 echo "››› Initializing Dotfiles"
 ./initDotfiles
+source ~/.zshrc
 
-# Symlink for GNU core utilities
+# Copy nvim files
+if [ -e ~/.config/nvim ]
+then
+  echo "››› NeoVim config exists!"
+else
+  echo "››› NeoVim config copy!"
+  cp -r $DOTFILES/nvim ~/.config/
+fi
+
+echo "››› Python Installs"
+pip2 install --user neovim
+pip3 install neovim-remote
+
+echo "››› Ruby Installs"
+gem install neovim
+
+echo "››› Install NPM Latest"
+npm i npm@latest -g
+
+echo "››› Node Installs"
+nvm install node
+nvm alias default stable
+if test ! $(which spoof)
+then
+  npm install -g spoof es-ctags
+fi
+
 echo "››› Adding symlink for GNU core utilities"
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
 
-# Install Node.js dependencies
-echo "››› Installing Node dependencies"
-if test ! $(which spoof)
-then
-  sudo npm install spoof -g
-fi
-
-# Install npm@latest
-echo "››› Installing NPM Latest"
-npm i npm@latest -g
-
-# Finish
 echo "››› Install Done!"
