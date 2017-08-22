@@ -4,3 +4,5 @@
 .idea
 run-servers.sh
 tags
+.git
+node_modules

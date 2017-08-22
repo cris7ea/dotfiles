@@ -1,6 +1,8 @@
-# Local/private config goes in the include
-[include]
-        path = ~/.gitconfig.local
+[user]
+        name = Cristea Cristian
+        email = cristeageorgecristian@gmail.com
+[credential]
+        helper = osxkeychain
 [hub]
         protocol = https
 [alias]
@@ -36,14 +38,14 @@
         ft = "!f() { git describe --always --contains $1; }; f"
 
         # Find commits by source code
-	      fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+        fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
         # Remove branches that have already been merged with master
-	      # a.k.a. ‘delete merged’
+        # a.k.a. ‘delete merged’
         dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
         # List contributors with number of commits
-	      contributors = shortlog --summary --numbered
+        contributors = shortlog --summary --numbered
 
         #Assume a file as unchanged
         assume = update-index --assume-unchanged
@@ -64,8 +66,8 @@
         branch = auto
         ui = true
 [core]
-        excludesfile = ~/.gitignore
-        editor = vim
+	excludesfile = /Users/cristeacristian/.gitignore_global
+        editor = nvim
 [apply]
         whitespace = nowarn
 [mergetool]
@@ -81,14 +83,12 @@
         # Setting to git 2.0 default to suppress warning message
         default = simple
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
 [difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[user]
-	name = Cristian Cristea
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true

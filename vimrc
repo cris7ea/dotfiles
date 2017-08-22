@@ -75,7 +75,7 @@ set background=dark
 colorscheme one
 
 hi! Search term=standout gui=standout guifg=#EAC175 guibg=#282C34
-"source ~/dotfiles/symlinks/nvim_colors.vim
+"source ~/.vim/nvim_colors.vim
 "--------------------------------------------------------------------}}}
 
 " Functions ---------------------------------------------------------{{{

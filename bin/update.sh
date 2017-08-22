@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sudo -v
-
 brew update
 brew upgrade -all
 npm i npm -g
