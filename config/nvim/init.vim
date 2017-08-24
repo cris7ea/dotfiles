@@ -107,9 +107,9 @@ nmap <Leader><Tab> <C-Y>,
 nmap 0 ^
 nmap $ g_
 " Source .vimrc
-nmap <Leader>so :source ~/.vimrc<CR>
+nmap <Leader>so :source ~/.config/nvim/init.vim<CR>
 " Edit .vimrc
-nmap <Leader>vi :e ~/.vimrc<CR>
+nmap <Leader>vi :e ~/.config/nvim/init.vim<CR><CR>
 " Will not jump a line that is wrapped
 nmap k gk
 nmap j gj

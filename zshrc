@@ -3,7 +3,7 @@ export PATH="$PATH:/usr/local/sbin:$HOME/.bin"
 export DOTFILES="$HOME/.dotfiles"
 export NVM_DIR="$HOME/.nvm"
 export ZSH="$HOME/.oh-my-zsh";
-export FZF_DEFAULT_OPTS='--extended --hidden -o'
+export FZF_DEFAULT_OPTS='--extended'
 export FZF_DEFAULT_COMMAND='ag --hidden -o --ignore .git -g ""'
 
 ## OH-MY-ZSH Configuration
