@@ -55,7 +55,7 @@ nvm alias default stable
 npm install -g spoof es-ctags pure-prompt
 
 echo "››› rcm create" # lsrc for exploring; rcup for creating and updating; rcdn deletes
-rcup -v -x scripts -S vim/pack/minpac/opt
+rcup -v -x scripts -S bin
 
 echo "››› other"
 git config --global core.excludesfile ~/.gitignore_global

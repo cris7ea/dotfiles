@@ -1,8 +1,10 @@
 # Paths
-export PATH="$PATH:$HOME/.bin"
+export PATH="$PATH:/usr/local/sbin:$HOME/.bin"
 export DOTFILES="$HOME/.dotfiles"
 export NVM_DIR="$HOME/.nvm"
 export ZSH="$HOME/.oh-my-zsh";
+export FZF_DEFAULT_OPTS='--extended --hidden -o'
+export FZF_DEFAULT_COMMAND='ag --hidden -o --ignore .git -g ""'
 
 ## OH-MY-ZSH Configuration
 ZSH_THEME="" # theme
@@ -37,3 +39,6 @@ alias fixhangouts="sudo killall coreaudiod"
 alias ll="ls -la"
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
