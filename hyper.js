@@ -1,21 +1,20 @@
 module.exports = {
   config: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-    cursorColor: 'rgba(88,88,88,0.8)',
+    cursorColor: 'rgba(255,255,255,0.8)',
     cursorShape: 'BLOCK',
     cursorBlink: false,
     foregroundColor: '#fff',
     backgroundColor: '#000',
-    borderColor: '#fff',
+    backgroundColor: '#121212',
     showHamburgerMenu: '',
     padding: '12px 14px',
     shell: '',
     shellArgs: ['--login'],
-    bell: 'SOUND',
+    bell: false,
     env: {},
     copyOnSelect: false,
-    css: '',
     termCSS: '',
     showWindowControls: '',
     colors: {
@@ -36,9 +35,17 @@ module.exports = {
       lightCyan: '#00ffff',
       lightWhite: '#ffffff',
     },
+    hyperTabs: {
+      tabIconsColored: true,
+      activityColor: '#FFD769',
+      closeAlign: 'right',
+    },
   },
   plugins: [
     'hyperlinks',
-    'hyper-papercolor',
+    'hyper-chesterish',
+    'hyper-font-smoothing',
+    'hyper-tabs-enhanced',
+    'hyperterm-solarized-light'
   ],
 };

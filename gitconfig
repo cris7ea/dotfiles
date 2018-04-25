@@ -1,6 +1,6 @@
 [user]
-        name = Cristea Cristian
-        email = cristeageorgecristian@gmail.com
+	name = Cristea Cristian
+	email = cristeageorgecristian@gmail.com
 [credential]
         helper = osxkeychain
 [hub]
@@ -59,14 +59,14 @@
         assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
         #
-        ghpages = subtree push --prefix site/ origin gh-pages
+        ghpages = subtree push --prefix build/ origin gh-pages
 [color]
         diff = auto
         status = auto
         branch = auto
         ui = true
 [core]
-	excludesfile = /Users/cristeacristian/.gitignore_global
+  excludesfile = /Users/cristeacristian/.gitignore_global
         editor = nvim
 [apply]
         whitespace = nowarn
@@ -83,9 +83,10 @@
         # Setting to git 2.0 default to suppress warning message
         default = simple
 [filter "lfs"]
-  clean = git-lfs clean %f
-  smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
   required = true
+	process = git-lfs filter-process
 [difftool "sourcetree"]
   cmd = opendiff \"$LOCAL\" \"$REMOTE\"
   path =
