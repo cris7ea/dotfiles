@@ -16,6 +16,9 @@ source $ZSH/oh-my-zsh.sh # init
 autoload -U promptinit; promptinit
 prompt pure
 
+# Loading nvm
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 export PATH
 
 # ALIASES
