@@ -214,9 +214,6 @@ defaults write com.apple.Safari WebKitInitialTimedLayoutDelay 0.25
 defaults write com.apple.Mail DisableSendAnimations -bool true
 defaults write com.apple.Mail DisableReplyAnimations -bool true
 
-# Disable Mission Control and Spaces
-defaults write com.apple.dock mcx-expose-disabled -bool TRUE
-
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
 

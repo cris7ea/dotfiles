@@ -1,13 +1,8 @@
 module.exports = {
   config: {
     fontSize: 20,
-    fontFamily: 'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-    cursorColor: 'rgba(255,255,255,0.8)',
+    fontFamily: '"Fira Code iScript", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
     cursorShape: 'BLOCK',
-    cursorBlink: false,
-    foregroundColor: '#fff',
-    backgroundColor: '#000',
-    backgroundColor: '#121212',
     showHamburgerMenu: '',
     padding: '12px 14px',
     shell: '',
