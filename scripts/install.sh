@@ -34,7 +34,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | b
 echo "››› node install"
 nvm install node
 nvm alias default stable
-npm install -g spoof pure-prompt eslint
+npm install -g spoof pure-prompt eslint npm-quick-run npm-check-updates
 
 echo "››› install NPM latest"
 npm i npm@latest -g
@@ -44,6 +44,7 @@ rcup -v -x scripts -S bin
 
 echo "››› other"
 git config --global core.excludesfile ~/.gitignore_global
+bat --generate-config-file
 source ~/.zshrc
 
 echo "››› Install Done!"

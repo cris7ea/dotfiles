@@ -21,6 +21,8 @@ brew 'ruby'
 brew 'youtube-dl'
 brew 'zsh-syntax-highlighting'
 brew 'zsh-autosuggestions'
+brew 'git-delta'
+brew 'bat'
 
 cask 'hyper'
 cask 'visual-studio-code'
