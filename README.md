@@ -5,5 +5,6 @@
 
 ```
 #Style
---style="header
+--style="header"
+--theme="OneHalfLight"
 ```
