@@ -47,4 +47,6 @@ git config --global core.excludesfile ~/.gitignore_global
 bat --generate-config-file
 source ~/.zshrc
 
+echo "Install https://fig.io/ manually"
+
 echo "››› Install Done!"
