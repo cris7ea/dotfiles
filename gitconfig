@@ -1,5 +1,5 @@
 [core]
-    pager = delta --plus-color="#bbebb9" --minus-color="#edb4a8" --theme='Solarized (light)'
+#     pager = delta --plus-color="#bbebb9" --minus-color="#edb4a8" --theme='Solarized (light)'
 
 [interactive]
     diffFilter = delta --color-only
